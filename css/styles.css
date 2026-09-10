@@ -1,0 +1,183 @@
+:root{
+  --bg:#0f1113;
+  --panel:#16181b;
+  --line:#26292d;
+  --text:#e7e7e5;
+  --muted:#8a8f95;
+  --accent:#7fd8a6;
+  --accent-dim:#4d6f5c;
+  --mono: 'SFMono-Regular', ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--mono);
+  line-height:1.5;
+  padding:2.5rem 1.25rem 4rem;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{ max-width:800px; margin:0 auto; }
+
+header{
+  margin-bottom:2rem;
+  border-bottom:1px solid var(--line);
+  padding-bottom:1.25rem;
+}
+.header-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+.prompt{
+  color:var(--accent);
+  font-size:0.8rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin:0;
+}
+.lang-toggle{
+  background:var(--panel);
+  border:1px solid var(--line);
+  color:var(--muted);
+  font-family:var(--mono);
+  font-size:0.72rem;
+  font-weight:600;
+  padding:0.35rem 0.65rem;
+  border-radius:6px;
+  cursor:pointer;
+  transition:all 0.15s ease;
+  letter-spacing:0.03em;
+}
+.lang-toggle:hover{
+  border-color:var(--accent-dim);
+  color:var(--accent);
+}
+h1{ margin:0.5rem 0 0; font-size:1.5rem; font-weight:600; letter-spacing:-0.01em; }
+.sub{ color:var(--muted); font-size:0.85rem; margin-top:0.5rem; }
+
+.tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.4rem;
+  margin-bottom:1.5rem;
+  position:sticky;
+  top:0;
+  background:var(--bg);
+  padding:0.75rem 0;
+  z-index:5;
+}
+.tab{
+  background:var(--panel);
+  border:1px solid var(--line);
+  color:var(--muted);
+  font-family:var(--mono);
+  font-size:0.75rem;
+  padding:0.4rem 0.75rem;
+  border-radius:999px;
+  cursor:pointer;
+  transition:all 0.15s ease;
+  white-space:nowrap;
+}
+.tab:hover{ border-color:var(--accent-dim); color:var(--text); }
+.tab.active{
+  background:rgba(127,216,166,0.1);
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.category{ margin-bottom:2rem; }
+.category h2{
+  font-size:0.72rem;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  font-weight:500;
+  margin:0 0 0.6rem;
+  padding-left:0.1rem;
+}
+
+ul.list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+  background:var(--panel);
+}
+li.row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:0.7rem 0.9rem;
+  border-bottom:1px solid var(--line);
+  transition:background 0.15s ease;
+}
+li.row:last-child{ border-bottom:none; }
+li.row:hover{ background:#1b1e21; }
+
+.info{ display:flex; flex-direction:column; min-width:0; gap:0.15rem; flex:1; }
+.cmd{
+  color:var(--accent);
+  font-size:0.88rem;
+  font-weight:600;
+  overflow-x:auto;
+  white-space:nowrap;
+  scrollbar-width:none;
+}
+.cmd::-webkit-scrollbar{ display:none; }
+.desc{
+  color:var(--muted);
+  font-size:0.78rem;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+button.copy{
+  flex:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--muted);
+  width:32px;
+  height:32px;
+  padding:0;
+  border-radius:6px;
+  cursor:pointer;
+  transition:all 0.15s ease;
+}
+button.copy svg{
+  width:15px; height:15px;
+  stroke:currentColor; fill:none;
+  stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+}
+button.copy .icon-check{ display:none; }
+button.copy:hover{ border-color:var(--accent-dim); color:var(--accent); }
+button.copy.copied{
+  border-color:var(--accent);
+  color:var(--accent);
+  background:rgba(127,216,166,0.08);
+}
+button.copy.copied .icon-copy{ display:none; }
+button.copy.copied .icon-check{ display:block; }
+
+.hidden{ display:none; }
+
+footer{ margin-top:2.5rem; text-align:center; color:var(--muted); font-size:0.72rem; }
+
+@media (max-width:520px){
+  body{ padding:1.75rem 0.9rem 3rem; }
+  li.row{ padding:0.65rem 0.75rem; }
+  .desc{ display:none; }
+  .cmd{ font-size:0.8rem; }
+  button.copy{ width:30px; height:30px; }
+  .tabs{ gap:0.3rem; }
+  .tab{ font-size:0.7rem; padding:0.35rem 0.6rem; }
+}
